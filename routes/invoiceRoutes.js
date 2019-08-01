@@ -34,4 +34,15 @@ invoiceRouter.post('/', async (req, res) => {
   }
 });
 
+invoiceRouter.put('/:id', async (req, res) => {
+  try {
+    const invoice = req.body;
+    let result = await Invoice.updateInvoice(invoice, req.params.id);
+    res.json(result);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = invoiceRouter;
