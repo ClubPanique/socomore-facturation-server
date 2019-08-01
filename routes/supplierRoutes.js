@@ -1,7 +1,7 @@
 const express = require('express');
 const supplierRouter = express.Router();
 
-const supplier = require('../controllers/supplierController');
+const {supplier} = require('../controllers/supplierController');
 
 supplierRouter.get('/', async (req, res) => {
   try {
@@ -22,5 +22,7 @@ supplierRouter.get('/:id', async (req, res) => {
     res.sendStatus(500);
   }
 });
+
+/* supplierRouter.post('/', createSupplier); */
 
 module.exports = supplierRouter;
