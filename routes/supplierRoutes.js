@@ -45,4 +45,14 @@ supplierRouter.put('/:id', async (req, res) => {
   }
 });
 
+supplierRouter.delete('/:id', async (req, res) => {
+  try {
+    let result = await Supplier.deleteSupplier(req.params.id);
+    res.json(result);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = supplierRouter;

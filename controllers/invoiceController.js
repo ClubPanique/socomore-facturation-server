@@ -66,4 +66,14 @@ Invoice.updateInvoice = (invoice, id) => {
   });
 };
 
+//Query sur la table invoice pour supprimer une facture avec un paramètre id.
+Invoice.deleteInvoice = id => {
+  return new Promise((resolve, reject) => {
+    pool.query('DELETE FROM invoice WHERE id = ?', [id], (err, res) => {
+      if (err) return reject(err);
+      resolve(res);
+    });
+  });
+};
+
 module.exports = Invoice;

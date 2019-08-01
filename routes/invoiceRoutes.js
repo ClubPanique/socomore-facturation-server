@@ -45,4 +45,14 @@ invoiceRouter.put('/:id', async (req, res) => {
   }
 });
 
+invoiceRouter.delete('/:id', async (req, res) => {
+  try {
+    let result = await Invoice.deleteInvoice(req.params.id);
+    res.json(result);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = invoiceRouter;

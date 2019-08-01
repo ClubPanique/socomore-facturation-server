@@ -71,4 +71,14 @@ Supplier.updateSupplier = (supplier, id) => {
   });
 };
 
+//Query sur la table supplier pour supprimer un fournisseur avec un paramètre id.
+Supplier.deleteSupplier = id => {
+  return new Promise((resolve, reject) => {
+    pool.query('DELETE FROM supplier WHERE id = ?', [id], (err, res) => {
+      if (err) return reject(err);
+      resolve(res);
+    });
+  });
+};
+
 module.exports = Supplier;
