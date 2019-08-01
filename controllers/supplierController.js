@@ -1,19 +1,4 @@
 const pool = require('../db');
-const express = require('express');
-
-//Requêtes sur la table supplier.
-/* let Supplier = supplier => {
-  this.company = supplier.company;
-  this.adress = supplier.adress;
-  this.postcode = supplier.postcode;
-  this.city = supplier.city;
-  this.country = supplier.country;
-  this.phone = supplier.phone;
-  this.swift_bic = supplier.swift_bic;
-  this.iban = supplier.iban;
-  this.account = supplier.account;
-  this.category = supplier.category;
-};*/
 
 const Supplier = {};
 
@@ -51,25 +36,11 @@ Supplier.newSupplier = supplier => {
     ];
     const query =
       'INSERT INTO supplier (company, adress, postcode, city, country, phone, swift_bic, iban, account, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    pool.query(query, params, (err, res, fields) => {
+    pool.query(query, params, (err, res) => {
       if (err) return reject(err);
-      console.log(fields);
       resolve(res);
     });
   });
 };
 
 module.exports = Supplier;
-
-/* [
-        newSupplier.company,
-        newSupplier.adress,
-        newSupplier.postcode,
-        newSupplier.city,
-        newSupplier.country,
-        newSupplier.phone,
-        newSupplier.swift_bic,
-        newSupplier.iban,
-        newSupplier.account,
-        newSupplier.category,
-      ] */
