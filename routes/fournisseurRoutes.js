@@ -1,7 +1,7 @@
 const express = require('express');
 const fournisseurRouter = express.Router();
 
-const fournisseurdb = require('../db/fournisseur');
+const fournisseurdb = require('../controllers/fournisseurController');
 
 fournisseurRouter.get('/', async (req, res) => {
   try {

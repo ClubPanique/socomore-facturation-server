@@ -1,4 +1,4 @@
-const pool = require('./index');
+const pool = require('../db');
 
 //Requêtes sur la table fournisseur.
 let fournisseurdb = {};

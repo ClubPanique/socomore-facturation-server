@@ -1,11 +1,11 @@
 const express = require('express');
 const factureRouter = express.Router();
 
-const facturedb = require('../db/facture');
+const facture = require('../controllers/factureController');
 
 factureRouter.get('/', async (req, res) => {
   try {
-    let result = await facturedb.all();
+    let result = await facture.all();
     res.json(result);
   } catch (err) {
     console.log(err);
@@ -15,7 +15,7 @@ factureRouter.get('/', async (req, res) => {
 
 factureRouter.get('/:id_fournisseur', async (req, res) => {
   try {
-    let result = await facturedb.one(req.params.id_fournisseur);
+    let result = await facture.one(req.params.id_fournisseur);
     res.json(result);
   } catch (err) {
     console.log(err);
