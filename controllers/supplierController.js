@@ -35,6 +35,30 @@ Supplier.findOneSupplier = id => {
   });
 };
 
+Supplier.newSupplier = supplier => {
+  return new Promise((resolve, reject) => {
+    const params = [
+      supplier.company,
+      supplier.adress,
+      supplier.postcode,
+      supplier.city,
+      supplier.country,
+      supplier.phone,
+      supplier.swift_bic,
+      supplier.iban,
+      supplier.account,
+      supplier.category,
+    ];
+    const query =
+      'INSERT INTO supplier (company, adress, postcode, city, country, phone, swift_bic, iban, account, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    pool.query(query, params, (err, res, fields) => {
+      if (err) return reject(err);
+      console.log(fields);
+      resolve(res);
+    });
+  });
+};
+
 module.exports = Supplier;
 
 /* [

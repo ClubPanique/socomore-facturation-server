@@ -24,7 +24,7 @@ app.use('/api/v1/suppliers', supplierRouter);
 //Routes d'accès aux invoices :
 app.use('/api/v1/invoices', invoiceRouter);
 
-app.post('/api/v1/suppliers', function(req, res) {
+/* app.post('/api/v1/suppliers', function(req, res) {
   const supplier = {
     company: req.body.company,
     adress: req.body.adress,
@@ -59,7 +59,7 @@ app.post('/api/v1/suppliers', function(req, res) {
       id: this.lastID,
     });
   });
-});
+}); */
 
 //Démarrage sur serveur :
 app.listen(port, () => {
