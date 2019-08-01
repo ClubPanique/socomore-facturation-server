@@ -1,11 +1,11 @@
 const express = require('express');
 const invoiceRouter = express.Router();
 
-const invoice = require('../controllers/invoiceController');
+const Invoice = require('../controllers/invoiceController');
 
 invoiceRouter.get('/', async (req, res) => {
   try {
-    let result = await invoice.findAllInvoices();
+    let result = await Invoice.findAllInvoices();
     res.json(result);
   } catch (err) {
     console.log(err);
@@ -15,7 +15,18 @@ invoiceRouter.get('/', async (req, res) => {
 
 invoiceRouter.get('/:id', async (req, res) => {
   try {
-    let result = await invoice.findOneInvoice(req.params.id);
+    let result = await Invoice.findOneInvoice(req.params.id);
+    res.json(result);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
+
+invoiceRouter.post('/', async (req, res) => {
+  try {
+    const invoice = req.body;
+    let result = await Invoice.newInvoice(invoice);
     res.json(result);
   } catch (err) {
     console.log(err);
