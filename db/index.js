@@ -9,6 +9,7 @@ const pool = mysql.createPool({
   database: 'socomore-facturation',
 });
 
+//Requêtes sur la table fournisseur.
 let fournisseurdb = {};
 
 fournisseurdb.all = () => {
@@ -22,15 +23,37 @@ fournisseurdb.all = () => {
 
 fournisseurdb.one = id => {
   return new Promise((resolve, reject) => {
+    pool.query('SELECT * FROM fournisseur WHERE id = ?', [id], (err, res) => {
+      if (err) return reject(err);
+      return resolve(res[0]);
+    });
+  });
+};
+
+//Requêtes sur la table factures.
+let facturedb = {};
+
+facturedb.all = () => {
+  return new Promise((resolve, reject) => {
+    pool.query('SELECT * FROM facture', (err, res) => {
+      if (err) return reject(err);
+      return resolve(res);
+    });
+  });
+};
+
+//Requêtes sur la table facture avec un paramètre id_fournisseur.
+facturedb.all = id_fournisseur => {
+  return new Promise((resolve, reject) => {
     pool.query(
-      'SELECT * FROM fournisseur WHERE id = ?',
-      [id],
-      (err, result) => {
+      'SELECT * FROM facture WHERE id_fournisseur = ?',
+      [id_fournisseur],
+      (err, res) => {
         if (err) return reject(err);
-        return resolve(result[0]);
+        return resolve(res);
       }
     );
   });
 };
 
-module.exports = fournisseurdb;
+module.exports = {fournisseurdb, facturedb};
