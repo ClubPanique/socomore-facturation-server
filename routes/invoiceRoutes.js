@@ -23,6 +23,16 @@ invoiceRouter.get('/:id', async (req, res) => {
   }
 });
 
+invoiceRouter.get('/supplier/:id', async (req, res) => {
+  try {
+    let result = await Invoice.findAllInvoicesWithSupplierId(req.params.id);
+    res.json(result);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
+
 invoiceRouter.post('/', async (req, res) => {
   try {
     const invoice = req.body;

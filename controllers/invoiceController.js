@@ -23,6 +23,20 @@ Invoice.findOneInvoice = id => {
   });
 };
 
+//Query sur la table invoice pour récupérer les factures d'un fournisseur avec un paramètre id.
+Invoice.findAllInvoicesWithSupplierId = id => {
+  return new Promise((resolve, reject) => {
+    pool.query(
+      'SELECT * FROM invoice WHERE supplier_id = ?',
+      [id],
+      (err, res) => {
+        if (err) return reject(err);
+        return resolve(res);
+      }
+    );
+  });
+};
+
 //Query sur la table invoice pour créer une facture.
 Invoice.newInvoice = invoice => {
   return new Promise((resolve, reject) => {
