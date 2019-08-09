@@ -3,20 +3,24 @@ const pool = require('../db');
 //Requêtes sur la table invoice.
 let Invoice = {};
 
-//Query sur la table invoice pour récupérer toutes les facture.
+//Query sur la table invoice pour récupérer toutes les facture (avec une jointure pour récupérer le nom du fournisseur)
 Invoice.findAllInvoices = () => {
   return new Promise((resolve, reject) => {
-    pool.query('SELECT * FROM invoice', (err, res) => {
-      if (err) return reject(err);
+    const query =
+      'SELECT i.*, s.company FROM invoice i, supplier s WHERE i.supplier_id = s.id';
+    pool.query(query, (err, res) => {
+      if (err) reject(err);
       return resolve(res);
     });
   });
 };
 
-//Query sur la table invoice pour récupérer une facture avec un paramètre id.
+//Query sur la table invoice pour récupérer une facture avec un paramètre id (avec jointure).
 Invoice.findOneInvoice = id => {
   return new Promise((resolve, reject) => {
-    pool.query('SELECT * FROM invoice WHERE id = ?', [id], (err, res) => {
+    const query =
+      'SELECT i.*, s.company  FROM invoice i, supplier s WHERE i.id = ?';
+    pool.query(query, [id], (err, res) => {
       if (err) return reject(err);
       return resolve(res);
     });
@@ -26,14 +30,12 @@ Invoice.findOneInvoice = id => {
 //Query sur la table invoice pour récupérer les factures d'un fournisseur avec un paramètre id.
 Invoice.findAllInvoicesWithSupplierId = id => {
   return new Promise((resolve, reject) => {
-    pool.query(
-      'SELECT * FROM invoice WHERE supplier_id = ?',
-      [id],
-      (err, res) => {
-        if (err) return reject(err);
-        return resolve(res);
-      }
-    );
+    const query =
+      'SELECT i.*, s.company FROM invoice i, supplier s WHERE i.supplier_id = s.id AND i.supplier_id = ?';
+    pool.query(query, [id], (err, res) => {
+      if (err) return reject(err);
+      return resolve(res);
+    });
   });
 };
 
