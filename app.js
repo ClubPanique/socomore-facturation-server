@@ -5,11 +5,11 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 //Configuration de CORS pour accepter les requêtes provenant du client
-/* const corsOptions = {
+const corsOptions = {
   //Définir l'adresse du client ici :
-  origin: 'http://localhost:8000',
+  origin: '*',
   optionsSuccessStatus: 200,
-}; */
+};
 
 //Utilisation du middleware cors pour pouvoir faire des requêtes à partir du client.
 app.use(cors());
