@@ -18,11 +18,11 @@ var corsOptions = {
     }
   },
 };
-const corsOptions = {
+/* const corsOptions = {
   //Définir l'adresse du client ici :
   origin: 'https://socomore-facturation-application.cleverapps.io/',
   optionsSuccessStatus: 200,
-};
+}; */
 
 //Utilisation du middleware cors pour pouvoir faire des requêtes à partir du client.
 app.use(cors(corsOptions));
