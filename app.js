@@ -5,7 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 //Configuration de CORS pour accepter les requêtes provenant du client
-var whitelist = [
+/* var whitelist = [
   'https://socomore-facturation-application.cleverapps.io/',
   'http://socomore-facturation-application.cleverapps.io/',
   'https://app-04e47380-3c5e-44c0-bbd1-b6ec7c6abe1f.cleverapps.io/',
@@ -19,12 +19,13 @@ var corsOptions = {
       callback(new Error('Not allowed by CORS'));
     }
   },
-};
-/* const corsOptions = {
-  //Définir l'adresse du client ici :
-  origin: 'https://socomore-facturation-application.cleverapps.io/',
-  optionsSuccessStatus: 200,
 }; */
+
+const corsOptions = {
+  //Définir l'adresse du client ici :
+  origin: '*',
+  optionsSuccessStatus: 200,
+};
 
 //Utilisation du middleware cors pour pouvoir faire des requêtes à partir du client.
 app.use(cors(corsOptions));
