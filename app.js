@@ -23,7 +23,7 @@ var corsOptions = {
 
 const corsOptions = {
   //Définir l'adresse du client ici :
-  origin: '*',
+  origin: 'http://socomore-facturation-application.cleverapps.io/',
   optionsSuccessStatus: 200,
 };
 
