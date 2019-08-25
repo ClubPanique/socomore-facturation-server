@@ -7,7 +7,9 @@ const bodyParser = require('body-parser');
 //Configuration de CORS pour accepter les requêtes provenant du client
 var whitelist = [
   'https://socomore-facturation-application.cleverapps.io/',
+  'http://socomore-facturation-application.cleverapps.io/',
   'https://app-04e47380-3c5e-44c0-bbd1-b6ec7c6abe1f.cleverapps.io/',
+  'http://app-04e47380-3c5e-44c0-bbd1-b6ec7c6abe1f.cleverapps.io/',
 ];
 var corsOptions = {
   origin: function(origin, callback) {
