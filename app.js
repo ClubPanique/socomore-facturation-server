@@ -25,9 +25,9 @@ const invoiceRouter = require('./routes/invoiceRoutes');
 
 //Route de bienvenue : utilise la routes définies dans l'index de ./routes, avec le point de départ api/v1/
 app.use('/api/v1/', welcomeRouter);
-//Routes d'accès aux suppliers :
+//Routes d'accès aux fournisseurs :
 app.use('/api/v1/suppliers', supplierRouter);
-//Routes d'accès aux invoices :
+//Routes d'accès aux factures :
 app.use('/api/v1/invoices', invoiceRouter);
 
 module.exports = app;

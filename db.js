@@ -1,32 +1,14 @@
 const mysql = require('mysql');
 
-//Configuration pour connexion en local
-/* const pool = mysql.createPool({
-  connectionLimit: 10,
-  host: 'localhost',
-  port: '3306',
-  user: 'root',
-  password: '',
-  database: 'socomore-facturation',
-}); */
-
-//Configuration pour déploiement sur Clever Cloud
+//Configuration de connexion, avec process.env si l'API est déployée, ou avec les infos de connexion en local en mode dev.
 const pool = mysql.createPool({
   connectionLimit: 10,
-  host: 'b53hlf0zjrgkbo7m2fik-mysql.services.clever-cloud.com',
-  port: '3306',
-  user: 'uyvzyidwyq1erced',
-  password: 'FOaPjHnrsotgfzpCOal6',
-  database: 'b53hlf0zjrgkbo7m2fik',
+  host: process.env.MYSQL_ADDON_HOST || 'localhost',
+  port: process.env.MYSQL_ADDON_PORT || '3306',
+  user: process.env.MYSQL_ADDON_USER || 'root',
+  password: process.env.MYSQL_ADDON_PASSWORD || '',
+  database: process.env.MYSQL_ADDON_DB || 'socomore-facturation',
 });
 
-//Configuration pour deploiement, bis :
-/* const pool = mysql.createPool({
-  connectionLimit: 10,
-  host: process.env.MYSQL_ADDON_HOST,
-  database: process.env.MYSQL_ADDON_DB,
-  user: process.env.MYSQL_ADDON_USER,
-  password: process.env.MYSQL_ADDON_PASSWORD,
-}); */
-
+//Export de la variable pool pour l'utiliser dans les controllers, pour connecter à la base de données pour faire les requêtes SQL.
 module.exports = pool;

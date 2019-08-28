@@ -4,6 +4,7 @@ const app = require('./app.js');
 const port = process.env.PORT || 3000;
 
 //Démarrage sur serveur :
-app.listen(port, () => {
+app.listen(port, err => {
+  if (err) console.log('Error launching server');
   console.log(`Server is running on port: ${port} `);
 });
