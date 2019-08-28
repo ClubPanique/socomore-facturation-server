@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 //Configuration de CORS pour accepter les requêtes provenant du client
 const corsOptions = {
   //Définir l'adresse du client ici :
-  origin: 'https://socomore-facturation-application.cleverapps.io',
+  origin: ['https://socomore-facturation-application.cleverapps.io'],
   optionsSuccessStatus: 200,
 };
 
