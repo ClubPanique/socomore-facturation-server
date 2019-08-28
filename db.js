@@ -1,3 +1,4 @@
+//Utilisation de la dépendance mysql pour manipuler la base de données.
 const mysql = require('mysql');
 
 //Configuration de connexion, avec process.env si l'API est déployée, ou avec les infos de connexion en local en mode dev.
