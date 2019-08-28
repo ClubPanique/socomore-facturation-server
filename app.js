@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 
 //Configuration de CORS pour accepter les requêtes provenant du client
 const corsOptions = {
-  //Définir l'adresse du client ici :
+  //Définir la/les adresse(s) du client ici :
   origin: [
     'https://socomore-facturation-application.cleverapps.io',
     'http://socomore-facturation-application.cleverapps.io',
@@ -26,7 +26,7 @@ const welcomeRouter = require('./routes');
 const supplierRouter = require('./routes/supplierRoutes');
 const invoiceRouter = require('./routes/invoiceRoutes');
 
-//Route de bienvenue : utilise la routes définies dans l'index de ./routes, avec le point de départ api/v1/
+//Route de bienvenue : utilise la routes définies dans l'index de ./routes, avec le point de départ /api/v1/
 app.use('/api/v1/', welcomeRouter);
 //Routes d'accès aux fournisseurs :
 app.use('/api/v1/suppliers', supplierRouter);
