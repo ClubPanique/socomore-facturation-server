@@ -10,6 +10,7 @@ const corsOptions = {
   origin: [
     'https://socomore-facturation-application.cleverapps.io',
     'http://socomore-facturation-application.cleverapps.io',
+    'http://localhost:8080',
   ],
   optionsSuccessStatus: 200,
 };
